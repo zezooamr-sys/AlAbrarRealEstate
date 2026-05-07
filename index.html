@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hay Al Wafaa — Phase 3 Townhouses | Muscat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand: #f5f0e8;
+    --sand-dark: #e8e0d0;
+    --charcoal: #1c1c1a;
+    --charcoal-soft: #2e2e2a;
+    --gold: #b8963e;
+    --gold-light: #d4b06a;
+    --gold-pale: #f0e6cc;
+    --forest: #2d4a2d;
+    --forest-light: #3d6b3d;
+    --cream: #faf8f4;
+    --text-muted: #6b6560;
+    --border: rgba(184,150,62,0.2);
+    --white: #ffffff;
+    --error: #c0392b;
+    --success: #2d6a4f;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--charcoal);
+    color: var(--sand);
+    overflow-x: hidden;
+  }
+
+  /* ——— HEADER BAR ——— */
+  .topbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem;
+    height: 60px;
+    background: rgba(28,28,26,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .topbar-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 400; letter-spacing: 0.12em;
+    color: var(--gold-light);
+    text-transform: uppercase;
+  }
+  .topbar-cta {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em;
+    color: var(--charcoal); background: var(--gold);
+    padding: 8px 18px; border-radius: 2px;
+    text-decoration: none; transition: background 0.2s;
+    text-transform: uppercase;
+  }
+  .topbar-cta:hover { background: var(--gold-light); }
+
+  /* ——— HERO ——— */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 0;
+    padding-top: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 20% 50%, rgba(45,74,45,0.25) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 80% 20%, rgba(184,150,62,0.08) 0%, transparent 50%),
+      var(--charcoal);
+  }
+
+  /* Geometric lines */
+  .hero-bg::before {
+    content: '';
+    position: absolute;
+    top: 10%; right: 420px;
+    width: 1px; height: 60%;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    opacity: 0.3;
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    bottom: 15%; left: 8%;
+    width: 120px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold-light));
+    opacity: 0.4;
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 5rem 4rem 4rem 5rem;
+    animation: fadeUp 0.9s ease both;
+  }
+
+  .hero-eyebrow {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.15em;
+    color: var(--gold); text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block;
+    width: 30px; height: 1px; background: var(--gold); opacity: 0.6;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 300; line-height: 1.1;
+    color: var(--sand);
+    margin-bottom: 0.5rem;
+  }
+  .hero-title em {
+    font-style: italic; color: var(--gold-light);
+  }
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 300;
+    color: var(--text-muted); margin-bottom: 2.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  .hero-specs {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    margin-bottom: 2.5rem;
+    max-width: 480px;
+    overflow: hidden;
+  }
+  .spec-item {
+    background: rgba(255,255,255,0.03);
+    padding: 1rem 1.25rem;
+  }
+  .spec-label {
+    font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 5px;
+  }
+  .spec-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem; font-weight: 400; color: var(--sand);
+  }
+  .spec-note { font-size: 0.7rem; color: var(--gold); margin-top: 2px; }
+
+  .hero-badges {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    animation: fadeUp 0.9s 0.3s ease both;
+  }
+  .badge {
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.05em;
+    padding: 5px 12px; border-radius: 2px;
+    border: 0.5px solid var(--border);
+    color: var(--text-muted);
+    background: rgba(255,255,255,0.03);
+  }
+  .badge-gold {
+    border-color: rgba(184,150,62,0.5);
+    color: var(--gold-light);
+    background: rgba(184,150,62,0.06);
+  }
+
+  /* ——— FORM PANEL ——— */
+  .form-panel {
+    position: relative; z-index: 2;
+    background: var(--cream);
+    display: flex; flex-direction: column;
+    overflow-y: auto;
+    min-height: calc(100vh - 60px);
+    animation: slideIn 0.7s ease both;
+  }
+
+  .form-inner {
+    padding: 2.5rem 2rem;
+    flex: 1;
+  }
+
+  .form-header {
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(28,28,26,0.1);
+  }
+  .form-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 500;
+    color: var(--charcoal);
+    margin-bottom: 4px;
+  }
+  .form-sub {
+    font-size: 0.8rem; color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .form-section-label {
+    font-size: 0.62rem; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gold);
+    margin: 1.25rem 0 0.75rem;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .form-section-label::after {
+    content: ''; flex: 1; height: 1px;
+    background: rgba(184,150,62,0.2);
+  }
+
+  .field-group { margin-bottom: 0.9rem; }
+  .field-label {
+    display: block; font-size: 0.72rem; font-weight: 500;
+    color: var(--charcoal); margin-bottom: 5px;
+    letter-spacing: 0.02em;
+  }
+  .field-required { color: var(--gold); margin-left: 2px; }
+  .field-hint { font-size: 0.65rem; color: var(--text-muted); font-weight: 400; margin-left: 4px; }
+
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 10px 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    color: var(--charcoal);
+    background: var(--white);
+    border: 1px solid rgba(28,28,26,0.15);
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    -webkit-appearance: none;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(184,150,62,0.1);
+  }
+  input.error, select.error { border-color: var(--error); }
+  .error-msg { font-size: 0.65rem; color: var(--error); margin-top: 4px; display: none; }
+  .error-msg.show { display: block; }
+
+  select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%236b6560'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; }
+
+  textarea { resize: vertical; min-height: 70px; }
+
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  /* Radio / checkbox groups */
+  .radio-group, .check-group {
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .radio-group.inline, .check-group.inline {
+    flex-direction: row; flex-wrap: wrap; gap: 6px;
+  }
+  .radio-item, .check-item {
+    display: flex; align-items: center; gap: 8px;
+    padding: 8px 12px;
+    border: 1px solid rgba(28,28,26,0.12);
+    border-radius: 2px;
+    cursor: pointer; font-size: 0.78rem;
+    color: var(--charcoal-soft);
+    background: var(--white);
+    transition: border-color 0.15s, background 0.15s;
+    user-select: none;
+  }
+  .radio-item:hover, .check-item:hover {
+    border-color: var(--gold); background: var(--gold-pale);
+  }
+  .radio-item input, .check-item input { display: none; }
+  .radio-item.selected, .check-item.selected {
+    border-color: var(--gold); background: var(--gold-pale);
+    color: var(--charcoal); font-weight: 500;
+  }
+  .radio-dot {
+    width: 14px; height: 14px; border-radius: 50%;
+    border: 1.5px solid rgba(28,28,26,0.25);
+    flex-shrink: 0; position: relative;
+    transition: border-color 0.15s;
+  }
+  .radio-item.selected .radio-dot {
+    border-color: var(--gold);
+  }
+  .radio-item.selected .radio-dot::after {
+    content: ''; position: absolute;
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold);
+  }
+  .check-box {
+    width: 14px; height: 14px; border-radius: 2px;
+    border: 1.5px solid rgba(28,28,26,0.25);
+    flex-shrink: 0; position: relative;
+    transition: border-color 0.15s;
+  }
+  .check-item.selected .check-box {
+    border-color: var(--gold); background: var(--gold);
+  }
+  .check-item.selected .check-box::after {
+    content: '';
+    position: absolute; top: 1px; left: 3px;
+    width: 5px; height: 8px;
+    border: 1.5px solid white; border-top: none; border-left: none;
+    transform: rotate(45deg);
+  }
+
+  /* NSS Highlight box */
+  .nss-box {
+    background: rgba(45,74,45,0.08);
+    border: 1px solid rgba(45,74,45,0.2);
+    border-radius: 2px;
+    padding: 10px 14px;
+    margin-bottom: 0.9rem;
+    font-size: 0.75rem; color: var(--forest);
+    line-height: 1.6;
+  }
+  .nss-box strong { display: block; font-size: 0.78rem; margin-bottom: 3px; color: var(--forest); }
+
+  /* Submit button */
+  .submit-btn {
+    width: 100%; padding: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    background: var(--gold);
+    border: none; border-radius: 2px;
+    cursor: pointer; margin-top: 1.25rem;
+    transition: background 0.2s, transform 0.1s;
+  }
+  .submit-btn:hover { background: var(--gold-light); }
+  .submit-btn:active { transform: scale(0.99); }
+  .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .form-privacy {
+    font-size: 0.65rem; color: var(--text-muted);
+    text-align: center; margin-top: 10px; line-height: 1.5;
+  }
+
+  /* WhatsApp CTA */
+  .whatsapp-bar {
+    margin: 1rem 0 0;
+    background: #25d366;
+    border-radius: 2px;
+    padding: 11px 16px;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    cursor: pointer; text-decoration: none;
+    font-size: 0.8rem; font-weight: 500; color: white;
+    transition: background 0.2s;
+  }
+  .whatsapp-bar:hover { background: #22c05c; }
+  .wa-icon { width: 18px; height: 18px; flex-shrink: 0; }
+
+  /* Divider */
+  .or-divider {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 0.68rem; color: var(--text-muted); margin: 0.75rem 0;
+  }
+  .or-divider::before, .or-divider::after {
+    content: ''; flex: 1; height: 1px; background: rgba(28,28,26,0.1);
+  }
+
+  /* ——— SUCCESS STATE ——— */
+  .success-panel {
+    display: none; flex-direction: column; align-items: center;
+    justify-content: center; text-align: center;
+    padding: 3rem 2rem;
+    min-height: 100%;
+  }
+  .success-icon {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: rgba(45,74,45,0.12);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+  .success-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 400; color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+  .success-msg { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem; }
+
+  /* ——— BELOW HERO: FEATURES ——— */
+  .features-strip {
+    background: var(--charcoal-soft);
+    border-top: 1px solid rgba(184,150,62,0.1);
+    padding: 3rem 5rem;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+  }
+  .feature-item { }
+  .feature-icon {
+    font-size: 1.1rem; margin-bottom: 0.6rem;
+    color: var(--gold);
+  }
+  .feature-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem; font-weight: 400; color: var(--sand);
+    margin-bottom: 4px;
+  }
+  .feature-desc { font-size: 0.75rem; color: var(--text-muted); line-height: 1.6; }
+
+  /* ——— UNIT TYPES ——— */
+  .units-section {
+    padding: 4rem 5rem;
+    background: var(--charcoal);
+  }
+  .section-eyebrow {
+    font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 300; color: var(--sand);
+    margin-bottom: 2rem;
+  }
+  .unit-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 720px; }
+  .unit-card {
+    border: 1px solid var(--border);
+    border-radius: 2px; padding: 1.5rem;
+    background: rgba(255,255,255,0.02);
+    transition: border-color 0.2s, background 0.2s;
+    cursor: pointer;
+  }
+  .unit-card:hover {
+    border-color: rgba(184,150,62,0.4);
+    background: rgba(184,150,62,0.03);
+  }
+  .unit-type {
+    font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.5rem;
+  }
+  .unit-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem; font-weight: 400; color: var(--sand);
+    margin-bottom: 0.75rem;
+  }
+  .unit-features { list-style: none; }
+  .unit-features li {
+    font-size: 0.75rem; color: var(--text-muted);
+    padding: 4px 0; display: flex; align-items: flex-start; gap: 8px;
+  }
+  .unit-features li::before { content: '—'; color: var(--gold); opacity: 0.5; flex-shrink: 0; }
+  .unit-price {
+    margin-top: 1rem; padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; color: var(--sand);
+  }
+  .unit-price-nss { font-size: 0.72rem; color: var(--gold); margin-top: 3px; }
+
+  /* ——— PAYMENT SECTION ——— */
+  .payment-section {
+    background: var(--charcoal-soft);
+    padding: 3rem 5rem;
+    border-top: 1px solid rgba(184,150,62,0.1);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  }
+  .payment-steps { }
+  .p-step {
+    display: flex; gap: 1rem; margin-bottom: 1.25rem; align-items: flex-start;
+  }
+  .p-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 300; color: var(--gold);
+    min-width: 32px; line-height: 1;
+  }
+  .p-text { }
+  .p-label { font-size: 0.78rem; font-weight: 500; color: var(--sand); }
+  .p-desc { font-size: 0.72rem; color: var(--text-muted); margin-top: 2px; }
+  .payment-note {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 300; font-style: italic;
+    color: var(--sand); line-height: 1.4;
+    border-left: 2px solid var(--gold);
+    padding-left: 1.25rem;
+  }
+  .payment-note span { color: var(--gold-light); }
+
+  /* ——— FOOTER ——— */
+  .footer {
+    background: var(--charcoal);
+    border-top: 1px solid rgba(184,150,62,0.1);
+    padding: 1.5rem 5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 0.72rem; color: var(--text-muted);
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem; color: var(--gold);
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+
+  /* ——— ANIMATIONS ——— */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  /* ——— RESPONSIVE ——— */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-content { padding: 3rem 1.5rem 2rem; }
+    .form-panel { min-height: auto; }
+    .features-strip { grid-template-columns: 1fr 1fr; padding: 2rem 1.5rem; }
+    .units-section { padding: 2.5rem 1.5rem; }
+    .unit-cards { grid-template-columns: 1fr; }
+    .payment-section { grid-template-columns: 1fr; gap: 2rem; padding: 2.5rem 1.5rem; }
+    .footer { flex-direction: column; gap: 8px; padding: 1.5rem; text-align: center; }
+    .topbar { padding: 0 1rem; }
+    .field-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<nav class="topbar">
+  <div class="topbar-logo">Hay Al Wafaa · Phase 3</div>
+  <a href="#lead-form" class="topbar-cta">Register Interest</a>
+</nav>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+
+  <!-- LEFT CONTENT -->
+  <div class="hero-content">
+    <div class="hero-eyebrow">Muscat · Exclusive New Launch</div>
+    <h1 class="hero-title">
+      A new chapter<br>
+      in <em>Muscat living</em>
+    </h1>
+    <p class="hero-subtitle">Phase 3 Townhouses — Type A & C · Hay Al Wafaa</p>
+
+    <div class="hero-specs">
+      <div class="spec-item">
+        <div class="spec-label">Starting from</div>
+        <div class="spec-val">OMR 149,000</div>
+        <div class="spec-note">NSS eligible from OMR 101,000</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Payment plan</div>
+        <div class="spec-val">4 Years</div>
+        <div class="spec-note">20% down · Quarterly</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Property type</div>
+        <div class="spec-val" style="font-size:1rem; line-height:1.4;">Garden Row Homes <span style="color:var(--gold);font-size:0.75rem;">Type A</span><br>Courtyard Townhouses <span style="color:var(--gold);font-size:0.75rem;">Type C</span></div>
+        <div class="spec-note">3BHK + Maids room</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Handover</div>
+        <div class="spec-val">Dec 2028</div>
+        <div class="spec-note">Through June 2029</div>
+      </div>
+    </div>
+
+    <div class="hero-badges">
+      <span class="badge badge-gold">Freehold · Open to all nationalities</span>
+      <span class="badge">Limited Units</span>
+      <span class="badge">NSS Preferred Rates</span>
+      <span class="badge">Modern Design</span>
+    </div>
+  </div>
+
+  <!-- RIGHT FORM PANEL -->
+  <aside class="form-panel" id="lead-form">
+    <div class="form-inner" id="form-container">
+      <div class="form-header">
+        <div class="form-title">Register your interest</div>
+        <div class="form-sub">Complete the form below and our team will contact you within 2 hours.</div>
+      </div>
+
+      <form id="inquiry-form" novalidate>
+
+        <!-- SECTION 1: Personal Info -->
+        <div class="form-section-label">Contact Details</div>
+
+        <div class="field-group">
+          <label class="field-label">Full name <span class="field-required">*</span></label>
+          <input type="text" id="name" placeholder="e.g. Ahmed Al Rashdi" required>
+          <div class="error-msg" id="name-err">Please enter your full name.</div>
+        </div>
+
+        <div class="field-row">
+          <div class="field-group">
+            <label class="field-label">Mobile <span class="field-required">*</span></label>
+            <input type="tel" id="phone" placeholder="+968 9X XXX XXX" required>
+            <div class="error-msg" id="phone-err">Please enter a valid mobile number.</div>
+          </div>
+          <div class="field-group">
+            <label class="field-label">Email <span class="field-required">*</span></label>
+            <input type="email" id="email" placeholder="your@email.com" required>
+            <div class="error-msg" id="email-err">Please enter a valid email.</div>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field-group">
+            <label class="field-label">Nationality <span class="field-required">*</span></label>
+            <select id="nationality" required>
+              <option value="">Select</option>
+              <optgroup label="GCC">
+                <option value="omani">Omani</option>
+                <option value="emirati">Emirati</option>
+                <option value="saudi">Saudi</option>
+                <option value="kuwaiti">Kuwaiti</option>
+                <option value="qatari">Qatari</option>
+                <option value="bahraini">Bahraini</option>
+              </optgroup>
+              <optgroup label="South Asia">
+                <option value="indian">Indian</option>
+                <option value="pakistani">Pakistani</option>
+                <option value="bangladeshi">Bangladeshi</option>
+              </optgroup>
+              <optgroup label="Other">
+                <option value="iraqi">Iraqi</option>
+                <option value="sudanese">Sudanese</option>
+                <option value="british">British</option>
+                <option value="other">Other</option>
+              </optgroup>
+            </select>
+            <div class="error-msg" id="nat-err">Please select your nationality.</div>
+          </div>
+          <div class="field-group">
+            <label class="field-label">Current location <span class="field-required">*</span></label>
+            <select id="location" required>
+              <option value="">Select</option>
+              <option value="muscat">Muscat</option>
+              <option value="other-oman">Other (Oman)</option>
+              <option value="uae">UAE</option>
+              <option value="ksa">Saudi Arabia</option>
+              <option value="other-gcc">Other GCC</option>
+              <option value="outside-gcc">Outside GCC</option>
+            </select>
+            <div class="error-msg" id="loc-err">Please select your location.</div>
+          </div>
+        </div>
+
+        <!-- NSS TRIGGER — shown for Omani nationality -->
+        <div class="nss-box" id="nss-box" style="display:none;">
+          <strong>Are you NSS eligible?</strong>
+          NSS-eligible Omani buyers qualify for preferential pricing from <strong>OMR 101,000</strong>. Our team can verify your eligibility within 24 hours.
+        </div>
+
+        <!-- SECTION 2: Buyer Profile -->
+        <div class="form-section-label">Your buying profile</div>
+
+        <div class="field-group">
+          <label class="field-label">Purpose of purchase <span class="field-required">*</span></label>
+          <div class="radio-group inline" id="intent-group">
+            <label class="radio-item" data-group="intent" data-val="end-user">
+              <input type="radio" name="intent" value="end-user">
+              <span class="radio-dot"></span> Own home
+            </label>
+            <label class="radio-item" data-group="intent" data-val="investment">
+              <input type="radio" name="intent" value="investment">
+              <span class="radio-dot"></span> Investment
+            </label>
+            <label class="radio-item" data-group="intent" data-val="both">
+              <input type="radio" name="intent" value="both">
+              <span class="radio-dot"></span> Both
+            </label>
+          </div>
+          <div class="error-msg" id="intent-err">Please select a purpose.</div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Which unit type interests you? <span class="field-required">*</span></label>
+          <div class="radio-group" id="unit-group">
+            <label class="radio-item" data-group="unit" data-val="type-a">
+              <input type="radio" name="unit" value="type-a">
+              <span class="radio-dot"></span>
+              <span><strong>Garden Row Homes</strong> — Type A · 3BHK + Maids, unique design &amp; modern layout</span>
+            </label>
+            <label class="radio-item" data-group="unit" data-val="type-c">
+              <input type="radio" name="unit" value="type-c">
+              <span class="radio-dot"></span>
+              <span><strong>Courtyard Townhouses</strong> — Type C · 3BHK + Maids, spacious courtyard design</span>
+            </label>
+            <label class="radio-item" data-group="unit" data-val="both">
+              <input type="radio" name="unit" value="both">
+              <span class="radio-dot"></span> Both — I'd like to see both types
+            </label>
+          </div>
+          <div class="error-msg" id="unit-err">Please select a unit type.</div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Other properties</label>
+          <div class="radio-group inline" id="other-prop-group">
+            <label class="radio-item" data-group="other-prop" data-val="apartment">
+              <input type="radio" name="other-prop" value="apartment">
+              <span class="radio-dot"></span> Apartment
+            </label>
+            <label class="radio-item" data-group="other-prop" data-val="townhouse">
+              <input type="radio" name="other-prop" value="townhouse">
+              <span class="radio-dot"></span> Townhouse
+            </label>
+            <label class="radio-item" data-group="other-prop" data-val="villa">
+              <input type="radio" name="other-prop" value="villa">
+              <span class="radio-dot"></span> Villa
+            </label>
+            <label class="radio-item" data-group="other-prop" data-val="penthouse">
+              <input type="radio" name="other-prop" value="penthouse">
+              <span class="radio-dot"></span> Penthouse
+            </label>
+          </div>
+        </div>
+
+        <!-- SECTION 3: Financial Qualification -->
+        <div class="form-section-label">Financial readiness</div>
+
+        <div class="field-group">
+          <label class="field-label">Monthly income bracket <span class="field-required">*</span></label>
+          <select id="income" required>
+            <option value="">Select your income range</option>
+            <option value="below-2000">Below OMR 2,000 / month</option>
+            <option value="2000-3000">OMR 2,000 – 3,000 / month</option>
+            <option value="3000-5000">OMR 3,000 – 5,000 / month</option>
+            <option value="5000-plus">OMR 5,000+ / month</option>
+            <option value="prefer-not">Prefer not to say</option>
+          </select>
+          <div class="error-msg" id="income-err">Please select your income range.</div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Down payment readiness <span class="field-required">*</span> <span class="field-hint">(20% required)</span></label>
+          <div class="radio-group inline" id="dp-group">
+            <label class="radio-item" data-group="dp" data-val="ready">
+              <input type="radio" name="dp" value="ready">
+              <span class="radio-dot"></span> Ready now
+            </label>
+            <label class="radio-item" data-group="dp" data-val="3months">
+              <input type="radio" name="dp" value="3months">
+              <span class="radio-dot"></span> Within 3 months
+            </label>
+            <label class="radio-item" data-group="dp" data-val="financing">
+              <input type="radio" name="dp" value="financing">
+              <span class="radio-dot"></span> Need financing guidance
+            </label>
+          </div>
+          <div class="error-msg" id="dp-err">Please select your down payment status.</div>
+        </div>
+
+        <div class="field-group" id="nss-field" style="display:none;">
+          <label class="field-label">NSS Eligibility <span class="field-required">*</span></label>
+          <div class="radio-group inline" id="nss-group">
+            <label class="radio-item" data-group="nss" data-val="yes">
+              <input type="radio" name="nss" value="yes">
+              <span class="radio-dot"></span> Yes, I am eligible
+            </label>
+            <label class="radio-item" data-group="nss" data-val="no">
+              <input type="radio" name="nss" value="no">
+              <span class="radio-dot"></span> Not eligible
+            </label>
+            <label class="radio-item" data-group="nss" data-val="unsure">
+              <input type="radio" name="nss" value="unsure">
+              <span class="radio-dot"></span> Not sure
+            </label>
+          </div>
+        </div>
+
+        <!-- SECTION 4: Purchase Timeline -->
+        <div class="form-section-label">Purchase timeline</div>
+
+        <div class="field-group">
+          <label class="field-label">When are you looking to buy? <span class="field-required">*</span></label>
+          <div class="radio-group inline" id="timeline-group">
+            <label class="radio-item" data-group="timeline" data-val="now">
+              <input type="radio" name="timeline" value="now">
+              <span class="radio-dot"></span> Immediately
+            </label>
+            <label class="radio-item" data-group="timeline" data-val="3m">
+              <input type="radio" name="timeline" value="3m">
+              <span class="radio-dot"></span> 1–3 months
+            </label>
+            <label class="radio-item" data-group="timeline" data-val="6m">
+              <input type="radio" name="timeline" value="6m">
+              <span class="radio-dot"></span> 3–6 months
+            </label>
+            <label class="radio-item" data-group="timeline" data-val="exploring">
+              <input type="radio" name="timeline" value="exploring">
+              <span class="radio-dot"></span> Just exploring
+            </label>
+          </div>
+          <div class="error-msg" id="timeline-err">Please select a timeline.</div>
+        </div>
+
+        <!-- SECTION 5: Visit -->
+        <div class="form-section-label">Next step</div>
+
+        <div class="field-group">
+          <label class="field-label">How would you like to proceed?</label>
+          <div class="radio-group" id="next-group">
+            <label class="radio-item" data-group="next" data-val="site-visit">
+              <input type="radio" name="next" value="site-visit">
+              <span class="radio-dot"></span> Book a site visit / showroom appointment
+            </label>
+            <label class="radio-item" data-group="next" data-val="call-back">
+              <input type="radio" name="next" value="call-back">
+              <span class="radio-dot"></span> Request a callback from the sales team
+            </label>
+            <label class="radio-item" data-group="next" data-val="brochure">
+              <input type="radio" name="next" value="brochure">
+              <span class="radio-dot"></span> Send me the full brochure &amp; floor plans
+            </label>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Employer / Company <span class="field-hint">(optional — helps us tailor financing options)</span></label>
+          <input type="text" id="employer" placeholder="e.g. PDO, Ministry of..., Private business">
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Any questions or notes? <span class="field-hint">(optional)</span></label>
+          <textarea id="notes" placeholder="e.g. Interested in Type A corner unit, need NSS guidance..."></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submit-btn">
+          Submit &amp; Register Interest
+        </button>
+
+        <div class="form-privacy">
+          Your information is confidential and will only be shared with the Hay Al Wafaa sales team. No spam, ever.
+        </div>
+
+      </form>
+
+      <div class="or-divider">or connect instantly via</div>
+
+      <a href="https://wa.me/96891000000?text=Hi%2C%20I'm%20interested%20in%20Hay%20Al%20Wafaa%20Phase%203%20Townhouses." class="whatsapp-bar" target="_blank">
+        <svg class="wa-icon" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Chat on WhatsApp
+      </a>
+    </div>
+
+    <!-- SUCCESS STATE -->
+    <div class="success-panel" id="success-panel">
+      <div class="success-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2d6a4f" stroke-width="2">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+      <div class="success-title">Thank you for registering</div>
+      <div class="success-msg">
+        Your enquiry has been received. A member of the Hay Al Wafaa sales team will contact you within <strong>2 hours</strong> to discuss the next steps.<br><br>
+        In the meantime, you can reach us directly on WhatsApp.
+      </div>
+      <a href="https://wa.me/96891000000" class="whatsapp-bar" style="max-width: 280px;">
+        <svg class="wa-icon" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Open WhatsApp
+      </a>
+    </div>
+  </aside>
+</section>
+
+<!-- ==================== FEATURES ==================== -->
+<section class="features-strip">
+  <div class="feature-item">
+    <div class="feature-icon">◈</div>
+    <div class="feature-title">Freehold ownership</div>
+    <div class="feature-desc">Open to all nationalities. Full legal title with residency visa eligibility.</div>
+  </div>
+  <div class="feature-item">
+    <div class="feature-icon">◈</div>
+    <div class="feature-title">NSS preferred pricing</div>
+    <div class="feature-desc">Eligible Omani buyers qualify from OMR 101,000 with government-backed finance support.</div>
+  </div>
+  <div class="feature-item">
+    <div class="feature-icon">◈</div>
+    <div class="feature-title">Flexible payment</div>
+    <div class="feature-desc">4 years plan. 20% down payment with quarterly instalments.</div>
+  </div>
+  <div class="feature-item">
+    <div class="feature-icon">◈</div>
+    <div class="feature-title">Dec 2028 handover</div>
+    <div class="feature-desc">Buy now at launch pricing before completion. Capital appreciation built in.</div>
+  </div>
+</section>
+
+<!-- ==================== UNIT TYPES ==================== -->
+<section class="units-section">
+  <div class="section-eyebrow">Available units</div>
+  <h2 class="section-title">Two thoughtfully designed townhouse types</h2>
+  <div class="unit-cards">
+    <div class="unit-card">
+      <div class="unit-type">Type A</div>
+      <div class="unit-name">Garden Row Homes</div>
+      <ul class="unit-features">
+        <li>3 bedrooms + maids room</li>
+        <li>Functional, modern floor plan</li>
+        <li>Contemporary architectural design</li>
+        <li>Private garden area</li>
+      </ul>
+      <div class="unit-price">From OMR 149,000</div>
+      <div class="unit-price-nss">NSS eligible from OMR 101,000</div>
+    </div>
+    <div class="unit-card">
+      <div class="unit-type">Type C</div>
+      <div class="unit-name">Courtyard Townhouses</div>
+      <ul class="unit-features">
+        <li>3 bedrooms + maids room</li>
+        <li>Private courtyard — indoor-outdoor living</li>
+        <li>Generous internal space</li>
+        <li>Traditional Omani spatial character</li>
+      </ul>
+      <div class="unit-price">From OMR 149,000</div>
+      <div class="unit-price-nss">NSS eligible from OMR 101,000</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PAYMENT ==================== -->
+<section class="payment-section">
+  <div class="payment-steps">
+    <div class="section-eyebrow">Payment plan</div>
+    <div class="p-step">
+      <div class="p-num">01</div>
+      <div class="p-text">
+        <div class="p-label">Book with 20% down payment</div>
+        <div class="p-desc">Secure your unit from OMR 20,000–34,000 depending on type &amp; eligibility</div>
+      </div>
+    </div>
+    <div class="p-step">
+      <div class="p-num">02</div>
+      <div class="p-text">
+        <div class="p-label">Quarterly instalments</div>
+        <div class="p-desc">Spread remaining balance over 3–5 years in manageable quarterly payments</div>
+      </div>
+    </div>
+    <div class="p-step">
+      <div class="p-num">03</div>
+      <div class="p-text">
+        <div class="p-label">Receive your keys Dec 2028</div>
+        <div class="p-desc">Move in or start earning rental income on your fully completed townhouse</div>
+      </div>
+    </div>
+  </div>
+  <div class="payment-note">
+    "Buying at launch means buying below completion value. Oman real estate prices rose <span>17% in 2025</span> — and Phase 3 is just beginning."
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <div class="footer-logo">Hay Al Wafaa · Phase 3 Townhouses</div>
+  <div>Muscat, Oman · © 2026 · All enquiries: <a href="https://wa.me/96891000000" style="color: var(--gold); text-decoration: none;">WhatsApp</a></div>
+</footer>
+
+<!-- ==================== JAVASCRIPT ==================== -->
+<script>
+  // ——— RADIO / CHECKBOX INTERACTION ———
+  document.querySelectorAll('.radio-item').forEach(item => {
+    item.addEventListener('click', function() {
+      const group = this.dataset.group;
+      document.querySelectorAll(`[data-group="${group}"]`).forEach(el => el.classList.remove('selected'));
+      this.classList.add('selected');
+      this.querySelector('input').checked = true;
+      const errEl = document.getElementById(group + '-err');
+      if (errEl) { errEl.classList.remove('show'); }
+      // Hide the input's required error styling if it's a radio group
+      const field = this.closest('.field-group');
+      if (field) field.classList.remove('has-error');
+    });
+  });
+
+  // ——— NSS CONDITIONAL LOGIC ———
+  document.getElementById('nationality').addEventListener('change', function() {
+    const isOmani = this.value === 'omani';
+    document.getElementById('nss-box').style.display = isOmani ? 'block' : 'none';
+    document.getElementById('nss-field').style.display = isOmani ? 'block' : 'none';
+  });
+
+  // ——— VALIDATION ———
+  function validateForm() {
+    let valid = true;
+
+    const fields = [
+      { id: 'name', errId: 'name-err', msg: 'Please enter your full name.' },
+      { id: 'phone', errId: 'phone-err', msg: 'Please enter a valid mobile number.' },
+      { id: 'email', errId: 'email-err', msg: 'Please enter a valid email address.' },
+      { id: 'nationality', errId: 'nat-err', msg: 'Please select your nationality.' },
+      { id: 'location', errId: 'loc-err', msg: 'Please select your current location.' },
+      { id: 'income', errId: 'income-err', msg: 'Please select your income range.' },
+    ];
+
+    fields.forEach(f => {
+      const el = document.getElementById(f.id);
+      const errEl = document.getElementById(f.errId);
+      const val = el.value.trim();
+      let fieldValid = val !== '';
+      if (f.id === 'email' && val) { fieldValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val); }
+      if (f.id === 'phone' && val) { fieldValid = val.replace(/\s/g,'').length >= 8; }
+
+      if (!fieldValid) {
+        el.classList.add('error');
+        errEl.classList.add('show');
+        valid = false;
+      } else {
+        el.classList.remove('error');
+        errEl.classList.remove('show');
+      }
+    });
+
+    // Radio groups
+    const radioGroups = ['intent', 'unit', 'dp', 'timeline'];
+    radioGroups.forEach(group => {
+      const selected = document.querySelector(`input[name="${group}"]:checked`);
+      const errEl = document.getElementById(group + '-err');
+      if (!selected && errEl) {
+        errEl.classList.add('show');
+        valid = false;
+      } else if (errEl) {
+        errEl.classList.remove('show');
+      }
+    });
+
+    return valid;
+  }
+
+  // ——— FORM SUBMIT ———
+  document.getElementById('inquiry-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    if (!validateForm()) {
+      // Scroll to first error
+      const firstError = document.querySelector('.error, .error-msg.show');
+      if (firstError) {
+        firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      return;
+    }
+
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Submitting...';
+
+    // Collect data
+    const formData = {
+      name: document.getElementById('name').value,
+      phone: document.getElementById('phone').value,
+      email: document.getElementById('email').value,
+      nationality: document.getElementById('nationality').value,
+      location: document.getElementById('location').value,
+      income: document.getElementById('income').value,
+      employer: document.getElementById('employer').value,
+      notes: document.getElementById('notes').value,
+      intent: document.querySelector('input[name="intent"]:checked')?.value || '',
+      unit: document.querySelector('input[name="unit"]:checked')?.value || '',
+      dp: document.querySelector('input[name="dp"]:checked')?.value || '',
+      timeline: document.querySelector('input[name="timeline"]:checked')?.value || '',
+      next: document.querySelector('input[name="next"]:checked')?.value || '',
+      nss: document.querySelector('input[name="nss"]:checked')?.value || 'n/a',
+      timestamp: new Date().toISOString(),
+    };
+
+    console.log('Lead captured:', formData);
+    // → In production: POST to your CRM / webhook endpoint here
+
+    // Simulate async (replace with real fetch)
+    setTimeout(() => {
+      document.getElementById('form-container').style.display = 'none';
+      const sp = document.getElementById('success-panel');
+      sp.style.display = 'flex';
+    }, 800);
+  });
+
+  // ——— SMOOTH SCROLL for topbar CTA ———
+  document.querySelector('.topbar-cta').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.getElementById('lead-form').scrollIntoView({ behavior: 'smooth' });
+  });
+</script>
+
+</body>
+</html>
